@@ -2,17 +2,120 @@
 <html>
   <head>
     <title>Amazon-clone</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="styles/general.css">
+    <link rel="stylesheet" href="styles/homepage.css">
+    <link rel="stylesheet" href="styles/header.css">
   </head>
   <body>
     <div class="navigation-bar">
-      <button>Amazon</button>
-      <input type="text" placeholder="Search" />
-      <button>Search</button>
-      <button>Returns & Orders</button>
-      <button>Cart</button>
+      <div class="left-section">
+        <a href="homepage.html" class="header-link">
+          <img class="amazon-logo" src="Resources/icons-images/amazon-logo-white.png" >
+        </a>
+      </div>
+
+      <div class="middile-section">
+        <input type="text" placeholder="Search" class="search-input">
+        <button class="search-button">
+          <img class="search-icon-cs" src="Resources/icons-images/search-icon.png">
+        </button>
+      </div>
+      
+      <div class="right-section">
+        <a class="order-link" href="orders.html">
+          <span class="returns">Returns</span>
+          <span class="orders">& Orders</span> 
+        </a>
+        <a class="cart-link" href="cart-page.html">
+          <img class="cart-icon" src="Resources/icons-images/cart-icon.png" >
+          <span class="cart-text">Cart</span>
+          <span class="no-of-cart-items">3</span>
+        </a>
+        
+      </div>
     </div>
+
+
     <div class="product-grid">
-      <div class="product-preview"><img src=""</div>
+      <div class="product-preview">
+        <div class="product-image-container">
+          <img class="product-img" src="Resources/product-images/athletic-cotton-socks-6-pairs.jpg">
+        </div>
+        <div class="product-name">Black and Gray Athletic Cotton Socks - 6 Pairs</div>
+        <div class="ratings-grid">
+          <img class="rating-img" src="Resources/ratings/rating-45.png">
+          <div class="no-of-ratings">87</div>
+        </div>
+        <div class="product-price">$10.90</div>
+        <select class="no-of-items">
+          <option selected value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+        </select>
+        <button class="add-cart-button">Add to Cart</button>
+      </div>
+      
+      <div class="product-preview">
+        <div class="product-image-container">
+          <img class="product-img" src="Resources/product-images/intermediate-composite-basketball.jpg">
+        </div>        
+        <div class="product-name">Intermediate Size Basketball</div>
+        <div class="ratings-grid">
+          <img class="rating-img" src="Resources/ratings/rating-4.png">
+          <div class="no-of-ratings">127</div>
+        </div>
+        <div class="product-price">$20.95</div>
+        <select class="no-of-items">
+          <option selected value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+        </select>
+        <button class="add-cart-button">Add to Cart</button>
+      </div>
+
+      <div class="product-preview">
+        <div class="product-image-container">
+          <img class="product-img" src="Resources/product-images/adults-plain-cotton-tshirt-2-pack-teal.jpg">
+        </div>        
+        <div class="product-name">Adults Plain Cotton T-Shirt - 2 Pack</div>
+        <div class="ratings-grid">
+          <img class="rating-img" src="Resources/ratings/rating-45.png">
+          <div class="no-of-ratings">56</div>
+        </div>
+        <div class="product-price">$7.99</div>
+        <select class="no-of-items">
+          <option selected value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+        </select>
+        <button class="add-cart-button">Add to Cart</button>
+      </div>
     </div>
   </body>
 </html>
