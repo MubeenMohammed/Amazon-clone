@@ -1,4 +1,4 @@
-import {cart} from '../data/cart.js';
+import {cart, addToCart} from '../data/cart.js';
 import { products } from '../data/products.js';
 
 let productHTML = '';
@@ -57,50 +57,39 @@ products.forEach((product) => {
 })
 
 const productGridElement = document.querySelector(".product-grid-js");
-
 productGridElement.innerHTML = productHTML;
 
+
+
+
+function updateCartQuantity() {
+    let cartQuantity = 0;
+
+    cart.forEach((cartItem) => {
+        cartQuantity += cartItem.quantity; 
+    })
+
+    const cartQuantityElement = document.querySelector(".js-cart-quantity");
+    cartQuantityElement.innerHTML = cartQuantity;
+}
+
+function displayAddedToCart(productId) {
+    const addedElement = document.querySelector(`.js-added-to-cart-${productId}`);
+    addedElement.classList.add(`added-to-cart-visible`);
+    
+    setTimeout(()=>{
+        addedElement.classList.remove(`added-to-cart-visible`);
+    },2000);
+}
 
 const buttonElements = document.querySelectorAll(".js-add-to-cart");
 
 buttonElements.forEach((button) => {
     button.addEventListener("click", () => {
         const productId = button.dataset.productId;
-
-        let matchingItem;
-        const quantitySelectorElement = document.querySelector(`.js-quantity-selector-${productId}`);
-        const quantitySelected = Number(quantitySelectorElement.value); 
-
-        cart.forEach((item) => {
-            if(productId === item.productId) {
-                matchingItem = item;
-            }
-        });
-
-        if (matchingItem) {
-            matchingItem.quantity ++;
-        } else {
-            cart.push({
-                productId: productId,
-                quantity: quantitySelected
-            });
-        }
-
-        let cartQuantity = 0;
-
-        cart.forEach((item) => {
-            cartQuantity += item.quantity; 
-        })
-
-        const cartQuantityElement = document.querySelector(".js-cart-quantity");
-        cartQuantityElement.innerHTML = cartQuantity;
-
-        const addedElement = document.querySelector(`.js-added-to-cart-${productId}`);
-        addedElement.classList.add(`added-to-cart-visible`);
-        
-        setTimeout(()=>{
-            addedElement.classList.remove(`added-to-cart-visible`);
-        },2000);
+        addToCart(productId);
+        updateCartQuantity();
+        displayAddedToCart(productId);
     })
 })
 
