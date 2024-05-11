@@ -73,6 +73,7 @@ function updateCartQuantity() {
     cartQuantityElement.innerHTML = cartQuantity;
 }
 
+
 function displayAddedToCart(productId) {
     const addedElement = document.querySelector(`.js-added-to-cart-${productId}`);
     addedElement.classList.add(`added-to-cart-visible`);
@@ -82,8 +83,8 @@ function displayAddedToCart(productId) {
     },2000);
 }
 
-const buttonElements = document.querySelectorAll(".js-add-to-cart");
 
+const buttonElements = document.querySelectorAll(".js-add-to-cart");
 buttonElements.forEach((button) => {
     button.addEventListener("click", () => {
         const productId = button.dataset.productId;
