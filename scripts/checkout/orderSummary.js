@@ -3,6 +3,7 @@ import { getProduct, products } from '../../data/products.js';
 import { formatCurrency } from '../utlis/money.js';
 import dayjs from 'https://unpkg.com/dayjs@1.11.10/esm/index.js'
 import { deliveryOptions, getDeliveryOption } from '../../data/deliveryOptions.js';
+import { renderPaymentSummary } from './paymentSummary.js';
 
 export function renderOrderSummary() {
 
@@ -67,8 +68,6 @@ export function renderOrderSummary() {
     `
     });
 
-    updateNoOfItems();
-
     const orderSummaryElement = document.querySelector(".js-order-summary");
     orderSummaryElement.innerHTML = cartSummaryHTML;
 
@@ -77,25 +76,20 @@ export function renderOrderSummary() {
             const productId = link.dataset.productId;
             removeFromCart(productId);
             document.querySelector(`.js-cart-item-container-${productId}`).remove();
-            updateNoOfItems();
+            renderOrderSummary();
+            renderPaymentSummary();
         })
     });
-
-
-    function updateNoOfItems() {
-        const cartQuantity = getCartQuantity();
-        document.querySelector(".js-cart-page-quantity").innerHTML = `${cartQuantity} items`;
-    }
 
 
     document.querySelectorAll(".js-update-link").forEach((link) => {
         link.addEventListener("click", () => {
             const productId = link.dataset.productId;
             const newQuantity = Number(document.querySelector(`.js-update-quantity-input-${productId}`).value);
-            console.log(typeof newQuantity);
             updateoOfProducts(productId,newQuantity);
             document.querySelector(`.js-quantity-label-${productId}`).innerHTML = newQuantity;
-            updateNoOfItems();
+            renderOrderSummary();
+            renderPaymentSummary();
         })
     });
 
@@ -142,6 +136,7 @@ export function renderOrderSummary() {
             const deliveryOptionId = element.dataset.deliveryOptionId;
             updateDeliveryOption(productId, deliveryOptionId);
             renderOrderSummary();
+            renderPaymentSummary();
         });
     });
 }
