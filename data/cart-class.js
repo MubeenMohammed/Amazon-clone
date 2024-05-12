@@ -84,7 +84,3 @@ class Cart {
         
     }
 }
-
-const cart = new Cart('cart-OOP');
-console.log(cart instanceof Cart);
-console.log(cart);
