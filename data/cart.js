@@ -1,3 +1,24 @@
+
+
+
+
+export function loadCart(fun) {  
+    const xhr = new XMLHttpRequest();
+  
+    xhr.addEventListener('load', () => {
+        const cart = JSON.parse(xhr.response);
+        fun();
+      });
+    xhr.open("GET", "https://supersimplebackend.dev/products");
+    xhr.send();
+
+
+  }
+
+
+
+
+
 export let cart  = JSON.parse(localStorage.getItem('cart')) || [{
     productId: "e43638ce-6aa0-4b85-b27f-e1d07eb678c6",
     quantity: 2,
